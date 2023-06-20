@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>>Forest Hotel | BOOK</title>
+    <style>
+      body,html{
+        height: 100%;
+        margin: 0;
+      }
+
+      body{
+        /* The image used */
+        background-image: url("https://images.pexels.com/photos/1878811/pexels-photo-1878811.jpeg");
+
+        /* Full height */
+        width: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+        section {
+              background-image: url("https://cdn.pixabay.com/photo/2020/03/08/21/41/boat-4913841_640.jpg");
+              width: 500px;
+              padding: 50px;
+              margin-left: auto;
+              margin-right: auto;
+              border-radius: 5px;
+            }
+        label{
+            font-weight:bold;
+            }
+        h1{
+            font-family:cursive;
+            font-weight:bold;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+            }
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body>
+<!--    Nav Bar     -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8000/" style="color:white; font-size:30px">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8000/about" style="color:white; font-size:30px">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8000/contact" style="color:white; font-size:30px">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/login" style="color:green; font-weight:bold; font-size:30px">BOOK</a>
+      </li>
+    </ul>
+<br>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endif %}
+
+  <section>
+    <form  method="post" action="/login">
+      {% csrf_token %}
+        <h1 style="color:green"><center>Booking Details</center></h1><br>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="First & Last name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="email address"><br><br>
+        <label for="room">Room Type:</label>
+        <select id="room" name="cars">
+            <option>Select Room</option>
+            <option value="couple">Couple Room</option>
+            <option value="family">Family Room</option>
+            <option value="villa">Villa</option>
+        </select><br><br>
+        <label for="guests">No. of guests:</label>
+        <input type="number" id="guests" name="guests" value="1"><br><br>
+        <label for="arrival">Arrival Date:</label>
+        <input type="date" id="arrival" name="arrival"><br><br>
+        <label for="departure">Departure Date:</label>
+        <input type="date" id="departure" name="departure"><br><br>
+        <label for="special">Special Requests:</label>
+        <textarea id="special" name="special" rows="2" cols="50" placeholder="Anything we can help you with?"></textarea><br><br>
+        <input type="reset" value="Reset" style="background-color: red;color: white;padding: 12px 20px;border: none;border-radius: 4px;cursor: pointer;float: left;">
+        <input type="submit" value="Submit" style="background-color: #04AA6D;color: white;padding: 12px 20px;border: none;border-radius: 4px;cursor: pointer;float: right;"><br>
+
+
+    </form>
+  </section>
+  </body>
+</html>
